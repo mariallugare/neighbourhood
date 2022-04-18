@@ -16,3 +16,7 @@ Change My neighborhood when I decide to move out.
 
 Only view details of a single neighborhood.
 
+# Setup and Installation
+To get the project .......
+
+Cloning the repository:
