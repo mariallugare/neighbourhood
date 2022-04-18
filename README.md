@@ -20,3 +20,19 @@ Only view details of a single neighborhood.
 To get the project .......
 
 Cloning the repository:
+https://github.com/mariallugare/neighbourhood
+
+# Navigate into the folder and install requirements
+cd myhood 
+# Install and activate Virtual
+
+- python3 -m venv virtual - source virtual/bin/activate  
+- 
+Install Dependencies
+
+pip install -r requirements.txt 
+
+Setup Database
+
+SetUp your database User,Password, Host then make migrate
+
