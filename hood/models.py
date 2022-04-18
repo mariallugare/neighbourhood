@@ -1,13 +1,16 @@
+from sqlite3 import Timestamp
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 
 class NeighbourHood(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=60)
     admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
-    hood_logo = models.ImageField(upload_to='images/')
+    neighbourhood_photo = CloudinaryField('photo', default='photo')
     description = models.TextField()
     health_tell = models.IntegerField(null=True, blank=True)
     police_number = models.IntegerField(null=True, blank=True)
@@ -30,10 +33,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     name = models.CharField(max_length=80, blank=True)
     bio = models.TextField(max_length=254, blank=True)
-    profile_picture = models.ImageField(upload_to='images/', default='default.png')
+    id_no = models.IntegerField(default=0)
+    profile_pic = CloudinaryField('profile')
     location = models.CharField(max_length=50, blank=True, null=True)
     neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.SET_NULL, null=True, related_name='members', blank=True)
-
+   
     def __str__(self):
         return f'{self.user.username} profile'
 
@@ -71,7 +75,16 @@ class Business(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=120, null=True)
     post = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    Timestamp = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='post_owner')
     hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, related_name='hood_post')
+
+    def __str__(self):
+        return self.title
+
+    def save_post(self):
+        return self.save()
+
+    def delete_post(self):
+        self.delete()
 
