@@ -1,0 +1,5 @@
+DJANGO_READ_DOT_ENV_FILE=True
+DJANGO_DEBUG=True
+DATABASE_URL='postgresql://localhost/my_gallery?user=marial&password=Doralove91!'
+SECRET_KEY='django-insecure-5m$&z298whe5tg2@-7xeu+ay8ve%23l(ch9%gx5f!kb2_ytd0t'
+ALLOWED_HOSTS='*'
