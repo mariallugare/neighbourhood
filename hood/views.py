@@ -4,7 +4,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from .models import Business, Post, Profile, NeighbourHood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from .forms import UpdateProfileForm, NeighbourHoodForm, PostForm,SignupForm
 from django.shortcuts import get_object_or_404, render, redirect
 
@@ -107,4 +107,8 @@ def leave_hood(request, id):
     request.user.profile.neighbourhood = None
     request.user.profile.save()
     return redirect('hood')
+
+def logoutv(request):
+    logout(request)
+    return redirect('login')
 

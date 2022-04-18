@@ -9,64 +9,51 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse">
+  
+    <nav class="navbar navbar-expand-lg navbar-text-secondary bg-text-secondary">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'index' %}">MyHood</a>
-            </div>
-
-            <div>
-
-               
-                
-                <div class="col-sm-6 col-md-6">
-                    {% if user.is_authenticated %}
-                    <ul>
-                        <li >
-                            <a href="#" class=" btn btn-default" data-toggle="" role="button"
-                                aria-expanded="false">Account
-                                <span class="caret"></span>
-                            </a>
-                            <ul id="kk" role="menu">
-                                <li>
-                                    <a href="{%url 'index'%}">Home</a>
-                                </li>
-                                <li><a href=""><i class="fa fa-user-o"></i> Profile</a></li>
-                                <li><a href="/admin"><i class="fa fa-user"></i><span>Admin</span></a></li>
-                                <li>
-                                    <a href="/accounts/password/change">Change Password</a>
-                                </li>
-                                <li>
-                                    <a href="/logout">Logout</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'hood' %}">Create New Neighbourhood</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    {% else %}
-                    <li>
-                        <a class='btn btn-default' href="/accounts/login">Login</a>
-                    </li>
-                
-                    {% endif %}
-                </div>
-
-                
-
-            </div>
-
-            
-
+          <a class="navbar-brand" href="{% url 'index' %}">Myhood</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{%url 'index'%}">Home</a>
+              </li>
+              {% if user.is_authenticated%}
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'hood' %}">Create new Neighborhood</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/accounts/password/change">change password</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
+
+
+
+
+
     <style>
         a{
             color: black;

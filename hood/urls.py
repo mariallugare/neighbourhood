@@ -14,6 +14,7 @@ urlpatterns = [
     path('leave_hood/<id>', views.leave_hood, name='leave-hood'),
     path('<hood_id>/new-post', views.create_post, name='post'),
     path('search/', views.search_business, name='search'),
+    path('logout/',views.logoutv,name = 'logout')
 
 ]
 if settings.DEBUG:
