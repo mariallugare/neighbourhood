@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render
 from django.http.response import HttpResponse, HttpResponseRedirect
-from .models import Business, Post, Profile, Neighbourhood
+from .models import Business, Post, Profile, NeighbourHood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
@@ -29,7 +29,7 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 def hoods(request):
-    all_hoods = Neighbourhood.objects.all()
+    all_hoods = NeighbourHood.objects.all()
     all_hoods = all_hoods[::-1]
     params = {
         'all_hoods': all_hoods,

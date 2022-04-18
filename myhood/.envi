@@ -1,6 +1,0 @@
-DJANGO_READ_DOT_ENV_FILE=True
-DJANGO_DEBUG=True
-DATABASE_URL='postgresql://localhost/myhood?user=marial&password=Doralove91!'
-SECRET_KEY='django-insecure-+td%0oqg&(psmas0e9)*-^&rdnn82-bunggxtm64plm70-!%uu'
-
-ALLOWED_HOSTS='*'

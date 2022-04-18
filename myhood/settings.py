@@ -11,14 +11,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from pathlib import Path
 import os
-import environ
 
-env = environ.Env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 
 
@@ -27,9 +25,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-import django_heroku
-import dj_database_url
-from decouple import config,Csv
+
 
 cloudinary.config( 
   cloud_name = "dcbdhkqtz", 
@@ -48,7 +44,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET_KEY'
+SECRET_KEY = 'django-insecure-+td%0oqg&(psmas0e9)*-^&rdnn82-bunggxtm64plm70-!%uu'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -57,20 +53,18 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DJANGO_DEBUG", False)
+# DEBUG = env.bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -81,13 +75,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hoodapp',
-    'bootstrap3',
+    'hood',
     'cloudinary',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,7 +91,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myhoodproject.urls'
+ROOT_URLCONF = 'myhood.urls'
 
 TEMPLATES = [
 {
@@ -117,13 +111,22 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'myhoodproject.wsgi.application'
+WSGI_APPLICATION = 'myhood.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myhood',
+        'USER': 'marial',
+        'PASSWORD':'Doralove91!',
+
+    }
+
+}
   
 
 # Password validation
@@ -166,7 +169,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'hood/static'),
 )
 
 LOGIN_REDIRECT_URL = '/'
@@ -180,11 +183,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# configuring the location for media
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Configure Django App for Heroku.
-django_heroku.settings(locals())

@@ -1,4 +1,4 @@
-from .models import Business, Neighbourhood, Post, Profile
+from .models import Business, NeighbourHood, Post, Profile
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -19,7 +19,7 @@ class UpdateProfileForm(forms.ModelForm):
 
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
-        model = Neighbourhood
+        model = NeighbourHood
         exclude = ('admin',)
 
 
