@@ -31,8 +31,19 @@ cd myhood
 Install Dependencies
 
 pip install -r requirements.txt 
-
-Setup Database
-
+# Setup Database
 SetUp your database User,Password, Host then make migrate
+
+
+# Now Migrate
+python manage.py migrate 
+
+# Run the application
+
+python manage.py runserver 
+# Testing the application
+python manage.py test 
+
+
+
 
