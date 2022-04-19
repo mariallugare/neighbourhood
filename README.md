@@ -46,9 +46,13 @@ python manage.py runserver
 # Testing the application
 python manage.py test 
 # Technology used
-Python3.6
-Django 2.2.6
+Python3.9
+
+Django 4.0
+
 Heroku
+# Known Bugs
+There are no known bugs currently but pull requests are allowed incase you spot a bug
 
 
 
