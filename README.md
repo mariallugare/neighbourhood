@@ -32,6 +32,12 @@ Install Dependencies
 
 pip install -r requirements.txt 
 # Setup Database
+
+# Technology used
+Python3.6
+Django 2.2.6
+Heroku
+
 SetUp your database User,Password, Host then make migrate
 
 
